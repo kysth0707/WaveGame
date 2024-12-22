@@ -59,12 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
+    <Compile Include="Assets\Scripts\ShowScoreScript.cs" />
     <Compile Include="Assets\Scripts\ShowAnimation.cs" />
     <Compile Include="Assets\Scripts\WaveScript.cs" />
     <Compile Include="Assets\Scripts\MapScript.cs" />
     <Compile Include="Assets\Scripts\ArduinoScript.cs" />
     <Compile Include="Assets\Scripts\TextScript.cs" />
-    <Compile Include="Assets\Scripts\ShowScoreScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

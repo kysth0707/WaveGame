@@ -26,7 +26,7 @@ public class MapScript : MonoBehaviour
     public bool isTutorial = true;
     int tutorialMap = 0;
 
-    int currentMap = 0;
+    public int currentMap = 0;
 
     float GameTime = 100f;
     public float lifeTime = -99999f;
@@ -40,6 +40,12 @@ public class MapScript : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.SetInt("PlayerScore", -1);
+            SceneManager.LoadScene("ShowScoreScene");
+        }
+
         if (lifeTime >= 0)
         {
             lifeTime -= Time.deltaTime;
@@ -78,7 +84,7 @@ public class MapScript : MonoBehaviour
             if(isTutorial)
             {
                 tutorialMap += 1;
-                if(tutorialMap == 4)
+                if(tutorialMap == 5 + 1)
                 {
                     offTutorial();
                 }
@@ -98,7 +104,7 @@ public class MapScript : MonoBehaviour
                 }
                 else
                 {
-                    selectMap(Random.Range(1, 3 + 1));
+                    selectMap(Random.Range(1, 6 + 1));
                 }
             }
         }
@@ -169,7 +175,8 @@ public class MapScript : MonoBehaviour
 
         Transform targetMap = Maps.GetChild(n);
         Transform clonedMap = Instantiate(targetMap, CurrentMap);
-        for(int i = 0; i < clonedMap.childCount; i++)
+        clonedMap.gameObject.SetActive(true);
+        for (int i = 0; i < clonedMap.childCount; i++)
         {
             GameObject targetObject = clonedMap.GetChild(i).gameObject;
             if (targetObject.CompareTag("Star"))

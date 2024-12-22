@@ -29,6 +29,9 @@ public class WaveScript : MonoBehaviour
     List<int> P2Wave_Direction = new List<int>();
     List<int> P2Wave_Pos = new List<int>();
 
+    [SerializeField] float timeNewValue;
+    [SerializeField] float posNewValue;
+
     float lastTime = -1f;
 
     void Start()
@@ -71,6 +74,11 @@ public class WaveScript : MonoBehaviour
         for(int i = 0; i < wavePoses.Length; i++)
         {
             Vector3 targetPos = new Vector3(-7 + (14f / (wavePoses.Length - 1)) * i, 0, wavePoses[i]);
+            if (mapScript.currentMap == 5)
+            {
+                targetPos += new Vector3(0, 0, 1.5f * Mathf.Sin(i * posNewValue + Time.time * timeNewValue));
+            }
+
             for (int x = 0; x < mapScript.targetStars.Count; x++)
             {
                 if (mapScript.targetStars[x].transform.GetChild(0).GetComponent<BoxCollider>().bounds.Contains(targetPos))
@@ -104,7 +112,7 @@ public class WaveScript : MonoBehaviour
 
                     if (!mapScript.isTutorial)
                     {
-                        mapScript.lifeTime -= 3;
+                        mapScript.lifeTime -= 5;
                     }
                 }
             }
@@ -150,7 +158,12 @@ public class WaveScript : MonoBehaviour
     {
         for (int i = 0; i < wavePoses.Length; i++)
         {
-            WaveLine.SetPosition(i, new Vector3(-7 + (14f / (wavePoses.Length - 1)) * i, 0, wavePoses[i]));
+            Vector3 pos = new Vector3(-7 + (14f / (wavePoses.Length - 1)) * i, 0, wavePoses[i]);
+            if (mapScript.currentMap == 5)
+            {
+                pos += new Vector3(0, 0, 1.5f*Mathf.Sin(i * posNewValue + Time.time * timeNewValue));
+            }
+            WaveLine.SetPosition(i, pos);
         }
     }
 
