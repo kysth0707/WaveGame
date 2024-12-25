@@ -28,7 +28,7 @@ public class MapScript : MonoBehaviour
 
     public int currentMap = 0;
 
-    float GameTime = 100f;
+    float GameTime = 60f;
     public float lifeTime = -99999f;
     public int score = 0;
 

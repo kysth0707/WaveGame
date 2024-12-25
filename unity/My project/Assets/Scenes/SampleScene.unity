@@ -2610,6 +2610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5ffee5b348a1344af0a9336da58abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portName: COM15
+  WS: {fileID: 342089851}
 --- !u!1001 &918965704
 PrefabInstance:
   m_ObjectHideFlags: 0
